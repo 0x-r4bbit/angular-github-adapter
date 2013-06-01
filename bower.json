@@ -1,0 +1,17 @@
+{
+  "author": "Pascal Precht",
+  "name": "angular-github-adapter",
+  "description": "Angular adapter module for github.js",
+  "version": "0.1.0",
+  "homepage": "http://github.com/PascalPrecht/angular-github-adapter",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PascalPrecht/angular-github-adapter"
+  },
+  "dependencies": {
+    "angular": "1.0.7"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.0.7"
+  }
+}
