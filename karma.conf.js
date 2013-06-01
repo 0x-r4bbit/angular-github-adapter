@@ -6,6 +6,7 @@ basePath = '';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
+  'bower_components/github/github.js',
   'bower_components/angular/angular.js',
   'bower_components/angular-mocks/angular-mocks.js',
   'src/**/*.js',
