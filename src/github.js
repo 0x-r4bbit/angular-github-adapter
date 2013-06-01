@@ -27,7 +27,7 @@ angular.module('pascalprecht.github-adapter').provider('$github', function () {
     $authType = type;
   };
 
-  this.$get = ['$q', function ($q) {
+  this.$get = ['$q', '$githubRepository', '$githubUser', '$githubGist', function ($q, $githubRepository, $githubUser, $githubGist) {
 
     var github = new Github({
       username: $username,
@@ -38,15 +38,15 @@ angular.module('pascalprecht.github-adapter').provider('$github', function () {
     var $github = {};
 
     $github.getRepo = function (username, reponame) {
-      return $q.when(github.getRepo(username, reponame));
+      return $q.when($githubRepository(github.getRepo(username, reponame)));
     };
 
     $github.getUser = function () {
-      return $q.when(github.getUser());
+      return $q.when($githubUser(github.getUser()));
     };
 
     $github.getGist = function (id) {
-      return $q.when(github.getGist(id));
+      return $q.when($githubGist(github.getGist(id)));
     };
 
     return $github;
