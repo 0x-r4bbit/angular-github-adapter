@@ -53,7 +53,7 @@ module.exports = function (grunt) {
       server: {
         configFile: 'karma.conf.js',
         singleRun: false
-      },
+      }
     },
     changelog: {
       options: {
