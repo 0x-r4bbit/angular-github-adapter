@@ -34,7 +34,7 @@ module.exports = function (grunt) {
     },
     concat: {
       src: {
-        src: ['src/**/*.js'],
+        src: ['src/github.js', 'src/**/*.js'],
         dest: 'dist/angular-github-adapter.js'
       }
     },

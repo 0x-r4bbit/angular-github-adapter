@@ -4,65 +4,261 @@ angular.module('pascalprecht.github-adapter')
 
   return function (repo) {
     var repositoryPromiseAdapter = {
-      commit: function () {
-        return $q.when(repo.commit());
+
+      commit: function (parent, tree, message) {
+        var deferred = $q.defer();
+
+        repo.commit(parent, tree, message, function (err, sha) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(sha);
+          }
+        });
+        return deferred.promise;
       },
-      contents: function () {
-        return $q.when(repo.contents());
+
+      contents: function (path) {
+        var deferred = $q.defer();
+
+        repo.contents(path, function (err, contents) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(contents);
+          }
+        });
+        return deferred.promise;
       },
-      createPullRequest: function () {
-        return $q.when(repo.createPullRequest());
+
+      createPullRequest: function (pr) {
+        var deferred = $q.defer();
+
+        repo.createPullRequest(pr, function (err, pr) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(pr);
+          }
+        });
+        return deferred.promise;
       },
-      createRef: function () {
-        return $q.when(repo.createRef());
+
+      createRef: function (spec) {
+        var deferred = $q.defer();
+
+        repo.createRef(spec, function (err) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve();
+          }
+        });
+        return deferred.promise;
       },
-      deleteRef: function () {
-        return $q.when(repo.deleteRef());
+
+      deleteRef: function (ref) {
+        var deferred = $q.defer();
+
+        repo.deleteRef(ref, function (err) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve();
+          }
+        });
+        return deferred.promise;
       },
+
       fork: function () {
-        return $q.when(repo.fork());
+        var deferred = $q.defer();
+
+        repo.fork(function () {
+          deferred.resolve();
+        });
+        return deferred.promise;
       },
-      getBlob: function () {
-        return $q.when(repo.geBlob());
+
+      getBlob: function (sha) {
+        var deferred = $q.defer();
+
+        repo.getBlob(sha, function (err) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve();
+          }
+        });
+        return deferred.promise;
       },
-      getRef: function () {
-        return $q.when(repo.getRef());
+
+      getRef: function (ref) {
+        var deferred = $q.defer();
+
+        repo.getRef(ref, function (err, res) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(res);
+          }
+        });
+        return deferred.promise;
       },
-      getSha: function () {
-        return $q.when(repo.getSha());
+
+      getSha: function (branch, path) {
+        var deferred = $q.defer();
+
+        repo.getSha(branch, path, function (err, sha) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(sha);
+          }
+        });
+        return deferred.promise;
       },
-      getTree: function () {
-        return $q.when(repo.getTree());
+
+      getTree: function (tree) {
+        var deferred = $q.defer();
+
+        repo.getTree(tree, function (err, tree) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(tree);
+          }
+        });
+        return deferred.promise;
       },
+
       listBranches: function () {
-        return $q.when(repo.listBranches());
+        var deferred = $q.defer();
+
+        repo.listBranches(function (err, branches) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(branches);
+          }
+        });
+        return deferred.promise;
       },
-      move: function () {
-        return $q.when(repo.move());
+
+      move: function (branch, path, newPath) {
+        var deferred = $q.defer();
+
+        repo.move(branch, path, newPath, function (err) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve();
+          }
+        });
+        return deferred.promise;
       },
-      postBlob: function () {
-        return $q.when(repo.postBlob());
+
+      postBlob: function (content) {
+        var deferred = $q.defer();
+
+        repo.postBlob(content, function (err, sha) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(sha);
+          }
+        });
+        return deferred.promise;
       },
+
       postTree: function () {
-        return $q.when(repo.postTree());
+        var deferred = $q.defer();
+
+        repo.postTree(tree, function (err, sha) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(sha);
+          }
+        });
+        return deferred.promise;
       },
-      read: function () {
-        return $q.when(repo.read());
+
+      read: function (branch, path) {
+        var deferred = $q.defer();
+
+        repo.read(branch, path, function (err, content) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(content);
+          }
+        });
+        return deferred.promise;
       },
-      remove: function () {
-        return $q.when(repo.remove());
+
+      remove: function (branch, path) {
+        var deferred = $q.defer();
+
+        repo.remove(branch, path, function (err) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve();
+          }
+        });
+        return deferred.promise;
       },
+
       show: function () {
-        return $q.when(repo.show());
+        var deferred = $q.defer();
+
+        repo.show(function (err, repo) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(repo);
+          }
+        });
+        return deferred.promise;
       },
-      updateHead: function () {
-        return $q.when(repo.updateHead());
+
+      updateHead: function (head, commit) {
+        var deferred = $q.defer();
+
+        repo.updateHead(head, commit, function (err) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve();
+          }
+        });
+        return deferred.promise;
       },
-      updateTree: function () {
-        return $q.when(repo.updateTree());
+
+      updateTree: function (baseTree, path, blob) {
+        var deferred = $q.defer();
+
+        repo.updateTree(baseTree, path, blob, function (err, sha) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(sha);
+          }
+        });
+        return deferred.promise;
       },
-      write: function () {
-        return $q.when(repo.write());
+
+      write: function (branch, path, content, message) {
+        var deferred = $q.defer();
+
+        repo.write(branch, path, content, message, function (err) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve();
+          }
+        });
+        return deferred.promise;
       }
     };
 
