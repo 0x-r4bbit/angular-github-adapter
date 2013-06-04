@@ -42,7 +42,7 @@ angular.module('pascalprecht.github-adapter')
             deferred.resolve(gist);
           }
         });
-        return deferred.promise
+        return deferred.promise;
       },
 
       read: function () {
