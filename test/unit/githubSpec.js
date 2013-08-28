@@ -31,6 +31,10 @@ describe('pascalprecht.github-adapter', function () {
       expect(typeof $github).toBe('object');
     });
 
+    it('should have a method setCreds()', function() {
+      expect($github.setCreds).toBeDefined();
+    });
+
     it('should have a method getRepo()', function () {
       expect($github.getRepo).toBeDefined();
     });
@@ -41,6 +45,16 @@ describe('pascalprecht.github-adapter', function () {
 
     it('should have a method getGist()', function () {
       expect($github.getGist).toBeDefined();
+    });
+
+    describe('#setCreds', function () {
+      it('should be a function', function () {
+        expect(typeof $github.setCreds).toBe('function');
+      });
+
+      it('should return undefined', function () {
+        expect(typeof $github.setCreds()).toBe('undefined');
+      });
     });
 
     describe('#getRepo', function () {
