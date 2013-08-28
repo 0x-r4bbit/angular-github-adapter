@@ -37,6 +37,14 @@ angular.module('pascalprecht.github-adapter').provider('$github', function () {
 
     var $github = {};
 
+    $github.setCreds = function (username, password, authType) {
+      github = new Github({
+        username: username,
+        password: password,
+        auth: authType
+      });
+    };
+
     $github.getRepo = function (username, reponame) {
       return $q.when($githubRepository(github.getRepo(username, reponame)));
     };
