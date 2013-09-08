@@ -18,13 +18,13 @@ Declare it as dependency in your app:
 angular.module('myApp', ['pascalprecht.github-adapter']);
 ```
 
-Use the `$githubProvider` to configure the service:
+Use the `$github` provider to configure the service:
 
 ```js
-angular.module('myApp').config(function ($githubProvider) {
-  $githubProvider.username('YOUR_USERNAME');
-  $githubProvider.password('YOUR_PASSWORD');
-  $githubProvider.authType('basic');
+angular.module('myApp').config(function ($github) {
+  $github.username('YOUR_USERNAME');
+  $github.password('YOUR_PASSWORD');
+  $github.authType('basic');
 });
 ```
 
