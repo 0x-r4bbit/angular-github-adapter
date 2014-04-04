@@ -92,6 +92,18 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
+      getCommits: function (options) {
+        var deferred = $q.defer();
+        repo.getCommits(options, function (err, repo) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(repo);
+          }
+        });
+        return deferred.promise;
+      },
+
       getRef: function (ref) {
         var deferred = $q.defer();
 
