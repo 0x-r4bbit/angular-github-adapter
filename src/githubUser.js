@@ -6,10 +6,25 @@ angular.module('pascalprecht.github-adapter')
 
     var userPromiseAdapter = {
 
-      gists: function (username) {
+      notifications: function() {
         var deferred = $q.defer();
 
-        user.gists(username, function (err, data) {
+        user.notifications(function(err, data) {
+          $rootScope.$apply(function() {
+            if (err) {
+              deferred.reject(err);
+            } else {
+              deferred.resolve(data);
+            }
+          });
+        });
+        return deferred.promise;
+      },
+
+      gists: function () {
+        var deferred = $q.defer();
+
+        user.gists(function (err, data) {
           $rootScope.$apply(function () {
             if (err) {
               deferred.reject(err);
@@ -20,6 +35,7 @@ angular.module('pascalprecht.github-adapter')
         });
         return deferred.promise;
       },
+
       orgRepos: function (name) {
         var deferred = $q.defer();
 
@@ -34,6 +50,7 @@ angular.module('pascalprecht.github-adapter')
         });
         return deferred.promise;
       },
+
       orgs: function () {
         var deferred = $q.defer();
 
