@@ -1,6 +1,6 @@
 {
   "name": "angular-github-adapter",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "description": "Angular adapter module for github.js.",
   "main": "component.js",
   "scripts": {
