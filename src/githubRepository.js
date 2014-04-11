@@ -5,6 +5,20 @@ angular.module('pascalprecht.github-adapter')
   return function (repo) {
     var repositoryPromiseAdapter = {
 
+      branch: function(oldBranch, newBranch) {
+        var deferred = $q.defer();
+        var args = [].push.call(arguments, function(err) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve();
+          }
+        });
+
+        repo.branch.apply(this, args);
+        return deferred.promise;
+      },
+
       commit: function (parent, tree, message) {
         var deferred = $q.defer();
 
@@ -18,10 +32,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      contents: function (path) {
+      contents: function (branch, path) {
         var deferred = $q.defer();
 
-        repo.contents(path, function (err, contents) {
+        repo.contents(branch, path, function (err, contents) {
           if (err) {
             deferred.reject(err);
           } else {
