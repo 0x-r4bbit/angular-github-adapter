@@ -9,10 +9,10 @@
     "url": "git://github.com/PascalPrecht/angular-github-adapter"
   },
   "dependencies": {
-    "angular": "1.0.7",
-    "github": "~0.7.0"
+    "angular": "~1.2.16",
+    "github": "~0.9.0"
   },
   "devDependencies": {
-    "angular-mocks": "~1.0.7"
+    "angular-mocks": "~1.2.16"
   }
 }
