@@ -26,6 +26,7 @@ describe('pascalprecht.github-adapter', function () {
 
       var repo = $githubRepository();
 
+      expect(repo.branch).toBeDefined();
       expect(repo.commit).toBeDefined();
       expect(repo.contents).toBeDefined();
       expect(repo.createPullRequest).toBeDefined();

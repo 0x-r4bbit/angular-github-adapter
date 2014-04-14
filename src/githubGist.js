@@ -1,3 +1,4 @@
+/*jslint es5: true */
 angular.module('pascalprecht.github-adapter')
 
 .factory('$githubGist', ['$q', function ($q) {

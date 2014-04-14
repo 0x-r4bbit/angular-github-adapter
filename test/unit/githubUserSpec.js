@@ -26,6 +26,7 @@ describe('pascalprecht.github-adapter', function () {
 
       var user = $githubUser();
 
+      expect(user.notifications).toBeDefined();
       expect(user.gists).toBeDefined();
       expect(user.orgRepos).toBeDefined();
       expect(user.orgs).toBeDefined();

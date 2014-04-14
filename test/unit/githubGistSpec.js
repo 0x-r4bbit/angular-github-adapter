@@ -1,3 +1,4 @@
+/*jslint es5: true */
 describe('pascalprecht.github-adapter', function () {
 
   var $githubGist;
