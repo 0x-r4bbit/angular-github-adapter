@@ -26,14 +26,27 @@ angular.module('pascalprecht.github-adapter').provider('$github', function () {
     }
     $authType = type;
   };
+  this.token = function (token) {
+    if (!token) {
+      return $token;
+    }
+    $token = token;
+  };
 
   this.$get = ['$q', '$githubRepository', '$githubUser', '$githubGist', function ($q, $githubRepository, $githubUser, $githubGist) {
 
-    var github = new Github({
-      username: $username,
-      password: $password,
-      auth: $authType
-    });
+    var config = {};
+    if ($username && $password) {
+      config = {
+        username: $username,
+        password: $password,
+        auth: $authType || 'basic'
+      }
+    }
+    if ($token) {
+      config.token = $token;
+    }
+    var github = new Github(config);
 
     var $github = {};
 
