@@ -4,7 +4,8 @@ angular.module('pascalprecht.github-adapter').provider('$github', function () {
 
   var $username,
       $password,
-      $authType;
+      $authType,
+      $token;
 
   this.username = function (name) {
     if (!name) {
