@@ -34,7 +34,7 @@ angular.module('pascalprecht.github-adapter').provider('$github', function () {
     $token = token;
   };
 
-  this.$get = ['$q', '$githubRepository', '$githubUser', '$githubGist', function ($q, $githubRepository, $githubUser, $githubGist) {
+  this.$get = ['$q', '$githubRepository', '$githubIssues', '$githubUser', '$githubGist', function ($q, $githubRepository, $githubIssues, $githubUser, $githubGist) {
 
     var config = {};
     if ($username && $password) {
@@ -42,7 +42,7 @@ angular.module('pascalprecht.github-adapter').provider('$github', function () {
         username: $username,
         password: $password,
         auth: $authType || 'basic'
-      }
+      };
     }
     if ($token) {
       config.token = $token;
@@ -61,6 +61,10 @@ angular.module('pascalprecht.github-adapter').provider('$github', function () {
 
     $github.getRepo = function (username, reponame) {
       return $q.when($githubRepository(github.getRepo(username, reponame)));
+    };
+
+    $github.getIssues = function (username, reponame) {
+      return $q.when($githubIssues(github.getIssues(username, reponame)));
     };
 
     $github.getUser = function () {
