@@ -40,6 +40,10 @@ describe('pascalprecht.github-adapter', function () {
       expect($github.getRepo).toBeDefined();
     });
 
+    it('should have a method getIssues()', function () {
+      expect($github.getIssues).toBeDefined();
+    });
+
     it('should have a method getUser()', function () {
       expect($github.getUser).toBeDefined();
     });
@@ -104,6 +108,36 @@ describe('pascalprecht.github-adapter', function () {
         expect(repo.updateHead).toBeDefined();
         expect(repo.updateTree).toBeDefined();
         expect(repo.write).toBeDefined();
+      });
+    });
+
+    describe('#getIssues', function () {
+
+      it('should be a function', function () {
+        expect(typeof $github.getIssues).toBe('function');
+      });
+
+      it('should return an object', function () {
+        expect(typeof $github.getIssues()).toBe('object');
+      });
+
+      it('should return an issues object', function () {
+
+        var issues,
+            deferred = $q.defer(),
+            promise = deferred.promise;
+
+        promise.then(function (value) {
+          issues = value;
+        });
+
+        $github.getIssues().then(function (issues) {
+          deferred.resolve(issues);
+        });
+
+        $rootScope.$apply();
+
+        expect(issues.list).toBeDefined();
       });
     });
 
