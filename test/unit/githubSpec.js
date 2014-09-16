@@ -104,6 +104,7 @@ describe('pascalprecht.github-adapter', function () {
         expect(repo.updateHead).toBeDefined();
         expect(repo.updateTree).toBeDefined();
         expect(repo.write).toBeDefined();
+        expect(repo.getPull).toBeDefined();
       });
     });
 
