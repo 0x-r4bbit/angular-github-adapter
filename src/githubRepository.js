@@ -298,6 +298,19 @@ angular.module('pascalprecht.github-adapter')
           }
         });
         return deferred.promise;
+      },
+
+      getPull: function (number) {
+        var deferred = $q.defer();
+
+        repo.getPull(number, function (err, pull) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(pull);
+          }
+        });
+        return deferred.promise;
       }
     };
 
