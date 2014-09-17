@@ -285,6 +285,19 @@ angular.module('pascalprecht.github-adapter')
           }
         });
         return deferred.promise;
+      },
+
+      listPulls: function (state) {
+        var deferred = $q.defer();
+
+        repo.listPulls(state, function (err, pulls) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve(pulls);
+          }
+        });
+        return deferred.promise;
       }
     };
 
