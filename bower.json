@@ -2,7 +2,7 @@
   "author": "Pascal Precht",
   "name": "angular-github-adapter",
   "description": "Angular adapter module for github.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/angular-github-adapter.js",
   "homepage": "http://github.com/PascalPrecht/angular-github-adapter",
   "repository": {
