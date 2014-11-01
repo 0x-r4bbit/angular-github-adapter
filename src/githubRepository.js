@@ -297,6 +297,7 @@ angular.module('pascalprecht.github-adapter')
             deferred.resolve(pulls);
           }
         });
+        return deferred.promise;
       },
 
       getPull: function (number) {
