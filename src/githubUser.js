@@ -4,7 +4,7 @@ angular.module('pascalprecht.github-adapter')
 
   return function (user) {
 
-    var userPromiseAdapter = {
+    return {
 
       notifications: function() {
         var deferred = $q.defer();
@@ -21,11 +21,11 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      gists: function () {
+      gists: function() {
         var deferred = $q.defer();
 
-        user.gists(function (err, data) {
-          $rootScope.$apply(function () {
+        user.gists(function(err, data) {
+          $rootScope.$apply(function() {
             if (err) {
               deferred.reject(err);
             } else {
@@ -36,11 +36,11 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      orgRepos: function (name) {
+      orgRepos: function(name) {
         var deferred = $q.defer();
 
-        user.orgRepos(name, function (err, data) {
-          $rootScope.$apply(function () {
+        user.orgRepos(name, function(err, data) {
+          $rootScope.$apply(function() {
             if (err) {
               deferred.reject(err);
             } else {
@@ -51,11 +51,11 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      orgs: function () {
+      orgs: function() {
         var deferred = $q.defer();
 
-        user.orgs(function (err, data) {
-          $rootScope.$apply(function () {
+        user.orgs(function(err, data) {
+          $rootScope.$apply(function() {
             if (err) {
               deferred.reject(err);
             } else {
@@ -66,11 +66,11 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      repos: function () {
+      repos: function() {
         var deferred = $q.defer();
 
-        user.repos(function (err, data) {
-          $rootScope.$apply(function () {
+        user.repos(function(err, data) {
+          $rootScope.$apply(function() {
             if (err) {
               deferred.reject(err);
             } else {
@@ -81,11 +81,11 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      show: function (username) {
+      show: function(username) {
         var deferred = $q.defer();
 
-        user.show(username, function (err, data) {
-          $rootScope.$apply(function () {
+        user.show(username, function(err, data) {
+          $rootScope.$apply(function() {
             if (err) {
               deferred.reject(err);
             } else {
@@ -96,11 +96,11 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      userGists: function (username) {
+      userGists: function(username) {
         var deferred = $q.defer();
 
-        user.userGists(username, function (err, data) {
-          $rootScope.$apply(function () {
+        user.userGists(username, function(err, data) {
+          $rootScope.$apply(function() {
             if (err) {
               deferred.reject(err);
             } else {
@@ -111,11 +111,11 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      userRepos: function (username) {
+      userRepos: function(username) {
         var deferred = $q.defer();
 
-        user.userRepos(username, function (err, data) {
-          $rootScope.$apply(function () {
+        user.userRepos(username, function(err, data) {
+          $rootScope.$apply(function() {
             if (err) {
               deferred.reject(err);
             } else {
@@ -126,7 +126,5 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       }
     };
-
-    return userPromiseAdapter;
   };
 }]);
