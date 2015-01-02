@@ -2,7 +2,7 @@
   "name": "angular-github-adapter",
   "version": "0.1.2",
   "description": "Angular adapter module for github.js.",
-  "main": "component.js",
+  "main": "dist/angular-github-adapter.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start --browsers Firefox --single-run"
   },
