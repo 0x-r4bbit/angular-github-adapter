@@ -5,12 +5,12 @@ angular.module('pascalprecht.github-adapter')
 
   return function (gist) {
 
-    var gistPromiseAdapter = {
+    return {
 
-      create: function (options) {
+      create: function(options) {
         var deferred = $q.defer();
 
-        gist.create(options, function (err, res) {
+        gist.create(options, function(err, res) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -20,10 +20,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      delete: function () {
+      delete: function() {
         var deferred = $q.defer();
 
-        gist.delete(function (err, res) {
+        gist.delete(function(err, res) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -33,10 +33,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      fork: function () {
+      fork: function() {
         var deferred = $q.defer();
 
-        gist.fork(function (err, gist) {
+        gist.fork(function(err, gist) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -46,10 +46,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      read: function () {
+      read: function() {
         var deferred = $q.defer();
 
-        gist.read(function (err, gist) {
+        gist.read(function(err, gist) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -59,10 +59,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      update: function (options) {
+      update: function(options) {
         var deferred = $q.defer();
 
-        gist.update(options, function (err, gist) {
+        gist.update(options, function(err, gist) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -72,7 +72,5 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       }
     };
-
-    return gistPromiseAdapter;
   };
 }]);

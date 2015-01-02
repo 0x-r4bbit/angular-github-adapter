@@ -3,7 +3,7 @@ angular.module('pascalprecht.github-adapter')
 .factory('$githubRepository', ['$q', function ($q) {
 
   return function (repo) {
-    var repositoryPromiseAdapter = {
+    return {
 
       branch: function(oldBranch, newBranch) {
         var deferred = $q.defer();
@@ -19,10 +19,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      commit: function (parent, tree, message) {
+      commit: function(parent, tree, message) {
         var deferred = $q.defer();
 
-        repo.commit(parent, tree, message, function (err, sha) {
+        repo.commit(parent, tree, message, function(err, sha) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -32,10 +32,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      contents: function (branch, path) {
+      contents: function(branch, path) {
         var deferred = $q.defer();
 
-        repo.contents(branch, path, function (err, contents) {
+        repo.contents(branch, path, function(err, contents) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -45,10 +45,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      createPullRequest: function (pr) {
+      createPullRequest: function(pr) {
         var deferred = $q.defer();
 
-        repo.createPullRequest(pr, function (err, pr) {
+        repo.createPullRequest(pr, function(err, pr) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -58,10 +58,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      createRef: function (spec) {
+      createRef: function(spec) {
         var deferred = $q.defer();
 
-        repo.createRef(spec, function (err) {
+        repo.createRef(spec, function(err) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -71,10 +71,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      deleteRef: function (ref) {
+      deleteRef: function(ref) {
         var deferred = $q.defer();
 
-        repo.deleteRef(ref, function (err) {
+        repo.deleteRef(ref, function(err) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -84,19 +84,19 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      fork: function () {
+      fork: function() {
         var deferred = $q.defer();
 
-        repo.fork(function () {
+        repo.fork(function() {
           deferred.resolve();
         });
         return deferred.promise;
       },
 
-      getBlob: function (sha) {
+      getBlob: function(sha) {
         var deferred = $q.defer();
 
-        repo.getBlob(sha, function (err) {
+        repo.getBlob(sha, function(err) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -106,9 +106,9 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      getCommits: function (options) {
+      getCommits: function(options) {
         var deferred = $q.defer();
-        repo.getCommits(options, function (err, repo) {
+        repo.getCommits(options, function(err, repo) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -118,10 +118,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      getRef: function (ref) {
+      getRef: function(ref) {
         var deferred = $q.defer();
 
-        repo.getRef(ref, function (err, res) {
+        repo.getRef(ref, function(err, res) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -131,10 +131,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      getSha: function (branch, path) {
+      getSha: function(branch, path) {
         var deferred = $q.defer();
 
-        repo.getSha(branch, path, function (err, sha) {
+        repo.getSha(branch, path, function(err, sha) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -144,10 +144,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      getTree: function (tree) {
+      getTree: function(tree) {
         var deferred = $q.defer();
 
-        repo.getTree(tree, function (err, tree) {
+        repo.getTree(tree, function(err, tree) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -157,10 +157,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      listBranches: function () {
+      listBranches: function() {
         var deferred = $q.defer();
 
-        repo.listBranches(function (err, branches) {
+        repo.listBranches(function(err, branches) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -170,10 +170,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      move: function (branch, path, newPath) {
+      move: function(branch, path, newPath) {
         var deferred = $q.defer();
 
-        repo.move(branch, path, newPath, function (err) {
+        repo.move(branch, path, newPath, function(err) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -183,10 +183,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      postBlob: function (content) {
+      postBlob: function(content) {
         var deferred = $q.defer();
 
-        repo.postBlob(content, function (err, sha) {
+        repo.postBlob(content, function(err, sha) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -196,10 +196,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      postTree: function () {
+      postTree: function() {
         var deferred = $q.defer();
 
-        repo.postTree(tree, function (err, sha) {
+        repo.postTree(tree, function(err, sha) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -209,10 +209,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      read: function (branch, path) {
+      read: function(branch, path) {
         var deferred = $q.defer();
 
-        repo.read(branch, path, function (err, content) {
+        repo.read(branch, path, function(err, content) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -222,10 +222,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      remove: function (branch, path) {
+      remove: function(branch, path) {
         var deferred = $q.defer();
 
-        repo.remove(branch, path, function (err) {
+        repo.remove(branch, path, function(err) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -235,10 +235,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      show: function () {
+      show: function() {
         var deferred = $q.defer();
 
-        repo.show(function (err, repo) {
+        repo.show(function(err, repo) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -248,10 +248,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      updateHead: function (head, commit) {
+      updateHead: function(head, commit) {
         var deferred = $q.defer();
 
-        repo.updateHead(head, commit, function (err) {
+        repo.updateHead(head, commit, function(err) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -261,10 +261,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      updateTree: function (baseTree, path, blob) {
+      updateTree: function(baseTree, path, blob) {
         var deferred = $q.defer();
 
-        repo.updateTree(baseTree, path, blob, function (err, sha) {
+        repo.updateTree(baseTree, path, blob, function(err, sha) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -274,10 +274,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      write: function (branch, path, content, message) {
+      write: function(branch, path, content, message) {
         var deferred = $q.defer();
 
-        repo.write(branch, path, content, message, function (err) {
+        repo.write(branch, path, content, message, function(err) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -287,10 +287,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      listPulls: function (state) {
+      listPulls: function(state) {
         var deferred = $q.defer();
 
-        repo.listPulls(state, function (err, pulls) {
+        repo.listPulls(state, function(err, pulls) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -300,10 +300,10 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       },
 
-      getPull: function (number) {
+      getPull: function(number) {
         var deferred = $q.defer();
 
-        repo.getPull(number, function (err, pull) {
+        repo.getPull(number, function(err, pull) {
           if (err) {
             deferred.reject(err);
           } else {
@@ -313,7 +313,5 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       }
     };
-
-    return repositoryPromiseAdapter;
   };
 }]);

@@ -3,7 +3,7 @@ angular.module('pascalprecht.github-adapter')
 .factory('$githubIssues', ['$q', function ($q) {
 
   return function (issues) {
-    var issuesPromiseAdapter = {
+    return {
 
       list: function(options) {
         var deferred = $q.defer();
@@ -18,7 +18,5 @@ angular.module('pascalprecht.github-adapter')
         return deferred.promise;
       }
     };
-
-    return issuesPromiseAdapter;
   };
 }]);
